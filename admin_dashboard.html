@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <h1>   ADMIN DASHBOARD   </h1>
+
+    <a href="/">
+        <button>Back Home</button>
+    </a>
+
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+
+    <br><br>
+
+    <h2>Generate Bill</h2>
+
+    <form method="POST" action="/add_bill">
+
+        <input type="number"
+        name="consumer_id"
+        placeholder="Consumer ID"
+        required>
+
+        <input type="text"
+        name="month"
+        placeholder="Month"
+        required>
+
+        <input type="number"
+        name="units_consumed"
+        placeholder="Units Consumed"
+        required>
+
+        <button type="submit">
+            Generate Bill
+        </button>
+
+    </form>
+
+    <br><br>
+
+    <h2>Consumers</h2>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for user in users %}
+
+        <tr>
+
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+
+            <td>
+
+                <a href="/delete_consumer/{{ user[0] }}">
+                    <button>
+                        Delete
+                    </button>
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br><br>
+
+    <h2>Bills</h2>
+
+    <table>
+
+        <tr>
+            <th>Bill ID</th>
+            <th>User ID</th>
+            <th>Month</th>
+            <th>Units</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Toggle</th>
+        </tr>
+
+        {% for bill in bills %}
+
+        <tr>
+
+            <td>{{ bill[0] }}</td>
+            <td>{{ bill[1] }}</td>
+            <td>{{ bill[2] }}</td>
+            <td>{{ bill[3] }}</td>
+            <td>₹ {{ bill[4] }}</td>
+            <td>{{ bill[5] }}</td>
+
+            <td>
+
+                <a href="/toggle_bill/{{ bill[0] }}">
+                    <button>
+                        Toggle
+                    </button>
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br><br>
+
+    <h2>Complaints</h2>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Complaint</th>
+            <th>Status</th>
+            <th>Toggle</th>
+        </tr>
+
+        {% for complaint in complaints %}
+
+        <tr>
+
+            <td>{{ complaint[0] }}</td>
+            <td>{{ complaint[3] }}</td>
+            <td>{{ complaint[4] }}</td>
+
+            <td>
+
+                <a href="/toggle_complaint/{{ complaint[0] }}">
+                    <button>
+                        Toggle
+                    </button>
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
