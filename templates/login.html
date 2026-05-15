@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <h1>⚡ USER LOGIN ⚡</h1>
+
+    <form method="POST">
+
+        <input type="email"
+        name="email"
+        placeholder="Email"
+        required>
+
+        <input type="password"
+        name="password"
+        placeholder="Password"
+        required>
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/forgot_password">
+        <button>
+            Forgot Password
+        </button>
+    </a>
+
+    <br><br>
+
+    <a href="/">
+        <button>
+            Back Home
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>

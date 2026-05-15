@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <h1>
+        Welcome {{ name }}
+    </h1>
+
+    <a href="/">
+        <button>Back Home</button>
+    </a>
+
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+
+    <br><br>
+
+    <h2>Your Bills</h2>
+
+    <table>
+
+        <tr>
+            <th>Month</th>
+            <th>Units</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for bill in bills %}
+
+        <tr>
+
+            <td>{{ bill[2] }}</td>
+            <td>{{ bill[3] }}</td>
+            <td>₹ {{ bill[4] }}</td>
+            <td>{{ bill[5] }}</td>
+
+            <td>
+
+                {% if bill[5] == 'Unpaid' %}
+
+                <a href="/pay_bill/{{ bill[0] }}">
+                    <button>Pay Now</button>
+                </a>
+
+                {% else %}
+                    Paid
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br><br>
+
+    <h2>Raise Complaint</h2>
+
+    <form method="POST" action="/add_complaint">
+
+        <input type="text"
+        name="description"
+        placeholder="Enter Complaint"
+        required>
+
+        <button type="submit">
+            Submit Complaint
+        </button>
+
+    </form>
+
+    <br><br>
+
+    <h2>Your Complaints</h2>
+
+    <table>
+
+        <tr>
+            <th>Complaint</th>
+            <th>Status</th>
+        </tr>
+
+        {% for complaint in complaints %}
+
+        <tr>
+
+            <td>{{ complaint[3] }}</td>
+            <td>{{ complaint[4] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
