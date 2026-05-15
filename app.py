@@ -7,10 +7,11 @@ app.secret_key = 'ebmssecretkey'
 
 # MYSQL CONFIG
 
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = 'yamanote.proxy.rlwy.net'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root123'
-app.config['MYSQL_DB'] = 'ebms'
+app.config['MYSQL_PASSWORD'] = 'NoMhEzhAPXDXgQttzEACiiipgfrUxzeP'
+app.config['MYSQL_DB'] = 'railway'
+app.config['MYSQL_PORT'] = 33360
 
 mysql = MySQL(app)
 
