@@ -2,12 +2,152 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>EBMS</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:#4b0082;
+            overflow:hidden;
+            color:white;
+        }
+
+        .homepage{
+            width:100%;
+            height:100vh;
+            position:relative;
+            padding:50px 70px;
+        }
+
+        /* TITLE */
+
+        .main-title{
+            font-size:82px;
+            font-weight:bold;
+            line-height:1.1;
+            width:65%;
+        }
+
+        /* SUBTITLE */
+
+        .subtitle{
+            width:100%;
+            text-align:center;
+            font-size:36px;
+            margin-top:45px;
+            font-weight:500;
+        }
+
+        /* BUTTONS */
+
+        .button-container{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            gap:35px;
+            margin-top:45px;
+        }
+
+        .button-container button{
+            padding:22px 48px;
+            font-size:28px;
+            border:none;
+            border-radius:18px;
+            background:white;
+            color:#4b0082;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .button-container button:hover{
+            transform:scale(1.05);
+        }
+
+        /* FEATURES */
+
+        .features{
+            position:absolute;
+            left:70px;
+            bottom:60px;
+        }
+
+        .features h2{
+            font-size:48px;
+            margin-bottom:22px;
+        }
+
+        .features ul{
+            list-style:none;
+        }
+
+        .features li{
+            font-size:30px;
+            margin-bottom:15px;
+        }
+
+        /* BULB */
+
+        .bulb-section{
+            position:absolute;
+            right:150px;
+            top:90px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+
+        .wire{
+            width:6px;
+            height:160px;
+            background:white;
+        }
+
+        .bulb{
+            width:140px;
+            height:140px;
+            border-radius:50%;
+            background:#ffd84d;
+
+            box-shadow:
+            0 0 25px #ffd84d,
+            0 0 60px #ffd84d,
+            0 0 120px #ffd84d;
+
+            animation:blink 1.8s infinite alternate;
+        }
+
+        @keyframes blink{
+
+            0%{
+                opacity:0.75;
+            }
+
+            100%{
+                opacity:1;
+                box-shadow:
+                0 0 40px #ffd84d,
+                0 0 80px #ffd84d,
+                0 0 140px #ffd84d;
+            }
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+    </style>
 
 </head>
 
@@ -15,39 +155,27 @@
 
     <div class="homepage">
 
-        <div class="left-section">
+        <h1 class="main-title">
+            ELECTRICITY BILL MANAGEMENT SYSTEM
+        </h1>
 
-            <h1 class="main-title">
-                ELECTRICITY BILL MANAGEMENT SYSTEM
-            </h1>
+        <p class="subtitle">
+            Smart Electricity Billing & Consumer Management Portal
+        </p>
 
-            <p class="subtitle">
-                Smart Electricity Billing & Consumer Management Portal
-            </p>
+        <div class="button-container">
 
-            <div class="button-container">
+            <a href="/login">
+                <button>User Login</button>
+            </a>
 
-                <a href="/login">
-                    <button>User Login</button>
-                </a>
+            <a href="/register">
+                <button>User Register</button>
+            </a>
 
-                <a href="/register">
-                    <button>User Register</button>
-                </a>
-
-                <a href="/admin">
-                    <button>Admin Login</button>
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="right-section">
-
-            <div class="wire"></div>
-
-            <div class="bulb"></div>
+            <a href="/admin">
+                <button>Admin Login</button>
+            </a>
 
         </div>
 
@@ -56,12 +184,20 @@
             <h2>Features</h2>
 
             <ul>
-                <li>⚡ Online Bill Payment</li>
-                <li>⚡ Monthly Usage Tracking</li>
-                <li>⚡ Complaint Management</li>
-                <li>⚡ Admin Dashboard</li>
-                <li>⚡ Payment Status</li>
+                <li>Online Bill Payment</li>
+                <li>Monthly Usage Tracking</li>
+                <li>Complaint Management</li>
+                <li>Admin Dashboard</li>
+                <li>Payment Status</li>
             </ul>
+
+        </div>
+
+        <div class="bulb-section">
+
+            <div class="wire"></div>
+
+            <div class="bulb"></div>
 
         </div>
 
