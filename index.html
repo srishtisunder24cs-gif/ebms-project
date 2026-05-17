@@ -1,65 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EBMS</title>
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            overflow:hidden;
+            font-family:Arial, sans-serif;
+            background:#4b0082;
+            color:white;
+        }
+
+        .homepage{
+            width:100%;
+            height:100vh;
+            position:relative;
+            padding:40px 60px;
+        }
+
+        /* TITLE */
+
+        .title{
+            font-size:80px;
+            font-weight:bold;
+            line-height:1.1;
+            margin-top:20px;
+        }
+
+        /* SUBTITLE */
+
+        .subtitle{
+            width:100%;
+            text-align:center;
+            font-size:36px;
+            margin-top:40px;
+            margin-bottom:40px;
+            font-weight:500;
+        }
+
+        /* BUTTONS */
+
+        .button-container{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            gap:35px;
+            margin-top:20px;
+        }
+
+        .button-container a button{
+            padding:22px 45px;
+            font-size:28px;
+            border:none;
+            border-radius:18px;
+            background:white;
+            color:#4b0082;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+            box-shadow:0 0 20px rgba(255,255,255,0.25);
+        }
+
+        .button-container a button:hover{
+            transform:scale(1.05);
+        }
+
+        /* FEATURES */
+
+        .features{
+            position:absolute;
+            left:60px;
+            bottom:70px;
+        }
+
+        .features h2{
+            font-size:52px;
+            margin-bottom:25px;
+        }
+
+        .features ul{
+            list-style:none;
+            padding:0;
+        }
+
+        .features ul li{
+            font-size:34px;
+            margin-bottom:18px;
+        }
+
+        /* BULB */
+
+        .bulb-container{
+            position:absolute;
+            right:120px;
+            top:130px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+
+        .wire{
+            width:6px;
+            height:130px;
+            background:white;
+        }
+
+        .bulb{
+            width:140px;
+            height:140px;
+            background:#ffd84d;
+            border-radius:50%;
+            box-shadow:
+            0 0 30px #ffd84d,
+            0 0 60px #ffd84d,
+            0 0 90px #ffd84d;
+            animation:blink 2s infinite alternate;
+            position:relative;
+        }
+
+        .bulb::before{
+            content:'';
+            position:absolute;
+            width:60px;
+            height:35px;
+            background:#ddd;
+            top:-20px;
+            left:40px;
+            border-radius:10px;
+        }
+
+        @keyframes blink{
+
+            0%{
+                opacity:0.7;
+                box-shadow:
+                0 0 20px #ffd84d,
+                0 0 40px #ffd84d;
+            }
+
+            100%{
+                opacity:1;
+                box-shadow:
+                0 0 40px #ffd84d,
+                0 0 80px #ffd84d,
+                0 0 120px #ffd84d;
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<div class="background"></div>
+<div class="homepage">
 
-<div class="main-container">
+    <div class="title">
+        ELECTRICITY BILL <br>
+        MANAGEMENT SYSTEM
+    </div>
 
-    <div class="left-section">
+    <div class="subtitle">
+        Smart Electricity Billing & Consumer Management Portal
+    </div>
 
-        <h1>   ELECTRICITY BILL MANAGEMENT SYSTEM   </h1>
+    <div class="button-container">
 
-        <p>
-            Smart Electricity Billing & Consumer Management Portal
-        </p>
+        <a href="/login">
+            <button>User Login</button>
+        </a>
 
-        <div class="button-group">
+        <a href="/register">
+            <button>User Register</button>
+        </a>
 
-            <a href="/login">
-                <button>User Login</button>
-            </a>
-
-            <a href="/register">
-                <button>User Register</button>
-            </a>
-
-            <a href="/admin">
-                <button>Admin Login</button>
-            </a>
-
-        </div>
+        <a href="/admin">
+            <button>Admin Login</button>
+        </a>
 
     </div>
 
-    <div class="right-section">
+    <div class="features">
 
-        <div class="info-card">
-            <h2>Features</h2>
+        <h2>Features</h2>
 
-            <ul>
-                <li>⚡ Online Bill Payment</li>
-                <li>⚡ Monthly Usage Tracking</li>
-                <li>⚡ Complaint Management</li>
-                <li>⚡ Admin Dashboard</li>
-                <li>⚡ Payment Status</li>
-            </ul>
-        </div>
+        <ul>
+            <li>⚡ Online Bill Payment</li>
+            <li>⚡ Monthly Usage Tracking</li>
+            <li>⚡ Complaint Management</li>
+            <li>⚡ Admin Dashboard</li>
+            <li>⚡ Payment Status</li>
+        </ul>
+
+    </div>
+
+    <div class="bulb-container">
+
+        <div class="wire"></div>
+
+        <div class="bulb"></div>
 
     </div>
 
 </div>
 
 </body>
-
 </html>
