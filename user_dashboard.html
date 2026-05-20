@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>User Dashboard</title>
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='css/style.css') }}">
+<head>
+
+<title>User Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 
 <body>
@@ -13,103 +16,184 @@
 
 <div class="container">
 
-    <h1>
-        Welcome {{ name }}
-    </h1>
+<h1>
+Welcome {{ name }}
+</h1>
 
-    <a href="/">
-        <button>Back Home</button>
-    </a>
+<a href="/">
+<button>
+Back Home
+</button>
+</a>
 
-    <a href="/logout">
-        <button>Logout</button>
-    </a>
+<a href="/logout">
+<button>
+Logout
+</button>
+</a>
 
-    <br><br>
+<br><br>
 
-    <h2>Your Bills</h2>
+<!-- BILLS -->
 
-    <table>
+<h2>Your Bills</h2>
 
-        <tr>
-            <th>Month</th>
-            <th>Units</th>
-            <th>Amount</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
+<table>
 
-        {% for bill in bills %}
+<tr>
+<th>Month</th>
+<th>Units</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
 
-        <tr>
+{% for bill in bills %}
 
-            <td>{{ bill[2] }}</td>
-            <td>{{ bill[3] }}</td>
-            <td>₹ {{ bill[4] }}</td>
-            <td>{{ bill[5] }}</td>
+<tr>
 
-            <td>
+<td>{{ bill[2] }}</td>
 
-                {% if bill[5] == 'Unpaid' %}
+<td>{{ bill[3] }}</td>
 
-                <a href="/pay_bill/{{ bill[0] }}">
-                    <button>Pay Now</button>
-                </a>
+<td>
+₹ {{ bill[4] }}
+</td>
 
-                {% else %}
-                    Paid
-                {% endif %}
+<td>
+{{ bill[5] }}
+</td>
 
-            </td>
+<td>
 
-        </tr>
+{% if bill[5]=='Unpaid' %}
 
-        {% endfor %}
+<a href="/pay_bill/{{ bill[0] }}">
 
-    </table>
+<button>
+Pay Now
+</button>
 
-    <br><br>
+</a>
 
-    <h2>Raise Complaint</h2>
+{% else %}
 
-    <form method="POST" action="/add_complaint">
+Paid
 
-        <input type="text"
-        name="description"
-        placeholder="Enter Complaint"
-        required>
+{% endif %}
 
-        <button type="submit">
-            Submit Complaint
-        </button>
+</td>
 
-    </form>
+</tr>
 
-    <br><br>
+{% endfor %}
 
-    <h2>Your Complaints</h2>
+</table>
 
-    <table>
+<br><br>
 
-        <tr>
-            <th>Complaint</th>
-            <th>Status</th>
-        </tr>
+<!-- UPDATE PROFILE -->
 
-        {% for complaint in complaints %}
+<h2>Update Profile</h2>
 
-        <tr>
+<form
+method="POST"
+action="/update_profile">
 
-            <td>{{ complaint[3] }}</td>
-            <td>{{ complaint[4] }}</td>
+<input
+type="text"
+name="full_name"
+placeholder="Enter New Name"
+required>
 
-        </tr>
+<input
+type="text"
+name="phone"
+placeholder="Enter New Phone"
+required>
 
-        {% endfor %}
+<input
+type="text"
+name="address"
+placeholder="Enter New Address"
+required>
 
-    </table>
+<button type="submit">
+
+Update Details
+
+</button>
+
+</form>
+
+<br><br>
+
+<!-- COMPLAINT -->
+
+<h2>Raise Complaint</h2>
+
+<form
+method="POST"
+action="/add_complaint">
+
+<input
+type="text"
+name="description"
+placeholder="Enter Complaint"
+required>
+
+<button>
+
+Submit Complaint
+
+</button>
+
+</form>
+
+<br><br>
+
+<!-- COMPLAINT HISTORY -->
+
+<h2>Your Complaints</h2>
+
+<table>
+
+<tr>
+
+<th>
+Complaint
+</th>
+
+<th>
+Status
+</th>
+
+</tr>
+
+{% for complaint in complaints %}
+
+<tr>
+
+<td>
+
+{{ complaint[2] }}
+
+</td>
+
+<td>
+
+{{ complaint[3] }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
 
 </div>
 
 </body>
+
 </html>
